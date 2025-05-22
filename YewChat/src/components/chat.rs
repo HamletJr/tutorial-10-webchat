@@ -92,11 +92,7 @@ impl Component for Chat {
                             .iter()
                             .map(|u| UserProfile {
                                 name: u.into(),
-                                avatar: format!(
-                                    "https://avatars.dicebear.com/api/adventurer-neutral/{}.svg",
-                                    u
-                                )
-                                .into(),
+                                avatar: "https://static.wikia.nocookie.net/houkai-star-rail/images/7/79/Sticker_PPG_13_Acheron_02.png/".to_string(),
                             })
                             .collect();
                         return true;
@@ -147,14 +143,16 @@ impl Component for Chat {
                             html!{
                                 <div class="flex m-3 bg-white rounded-lg p-2">
                                     <div>
-                                        <img class="w-12 h-12 rounded-full" src={u.avatar.clone()} alt="avatar"/>
+                                        <div class="flex items-center h-full">
+                                            <img class="w-12 h-12 rounded-full" src={u.avatar.clone()} alt="avatar"/>
+                                        </div>
                                     </div>
                                     <div class="flex-grow p-3">
                                         <div class="flex text-xs justify-between">
                                             <div>{u.name.clone()}</div>
                                         </div>
                                         <div class="text-xs text-gray-400">
-                                            {"Hi there!"}
+                                            {"Hope Is the Thing With Feathers"}
                                         </div>
                                     </div>
                                 </div>
@@ -164,7 +162,10 @@ impl Component for Chat {
                 </div>
                 <div class="grow h-screen flex flex-col">
                     <div class="w-full h-14 border-b-2 border-gray-300"><div class="text-xl p-3">{"💬 Chat!"}</div></div>
-                    <div class="w-full grow overflow-auto border-b-2 border-gray-300">
+                    <div
+                        class="w-full grow overflow-auto border-b-2 border-gray-300"
+                        style="background-image: url('https://moewalls.com/wp-content/uploads/2024/11/honkai-star-rail-penacony-dreams-edge-thumb.jpg'); background-size: cover; background-position: center; opacity: 0.8;"
+                    >
                         {
                             self.messages.iter().map(|m| {
                                 let user = self.users.iter().find(|u| u.name == m.from).unwrap();
